@@ -41,6 +41,7 @@
         linear-gradient(160deg, #06070e 0%, #090b18 46%, #06070f 100%);
       line-height: 1.6;
       overflow-x: hidden;
+      animation: globalHueShift 120s linear infinite;
     }
 
     body::before {
@@ -307,8 +308,12 @@
         gap: 1.6rem;
       }
 
+      .logo-text {
+        font-size: 1.8rem;
+      }
+
       .proposal-chip {
-        margin-left: 10px;
+        display: none;
       }
 
       .hero {
@@ -343,6 +348,15 @@
       to {
         opacity: 1;
         transform: translateY(0);
+      }
+    }
+
+    @keyframes globalHueShift {
+      from {
+        filter: hue-rotate(0deg);
+      }
+      to {
+        filter: hue-rotate(360deg);
       }
     }
   </style>
