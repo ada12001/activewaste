@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website Redesign Proposal | Active Waste Solutions</title>
+  <meta name="description" content="Website redesign proposal prepared by LuxWeb for Active Waste Solutions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #06070e;
+      --panel: rgba(14, 16, 28, 0.78);
+      --panel-strong: rgba(19, 22, 38, 0.96);
+      --text: #efede5;
+      --muted: #b8bccf;
+      --line: rgba(255, 255, 255, 0.14);
+      --cyan: #12cbff;
+      --blue: #4f66ff;
+      --violet: #8d52ff;
+      --magenta: #f06ec9;
+      --accent-grad: linear-gradient(120deg, var(--cyan) 0%, var(--blue) 34%, var(--violet) 67%, var(--magenta) 100%);
+      --warm: #f2ecde;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Space Grotesk", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 14%, rgba(20, 203, 255, 0.22), transparent 34%),
+        radial-gradient(circle at 78% 0%, rgba(138, 82, 255, 0.25), transparent 30%),
+        radial-gradient(circle at 92% 78%, rgba(240, 110, 201, 0.22), transparent 34%),
+        linear-gradient(160deg, #06070e 0%, #090b18 46%, #06070f 100%);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: radial-gradient(circle at center, #000 28%, transparent 90%);
+      opacity: 0.25;
+      z-index: -2;
+    }
+
+    .shell {
+      width: min(1100px, 92vw);
+      margin: 4.2rem auto 4rem;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: linear-gradient(150deg, rgba(19, 21, 35, 0.92) 0%, rgba(9, 11, 20, 0.88) 100%);
+      box-shadow: 0 30px 100px rgba(1, 2, 8, 0.65);
+      backdrop-filter: blur(18px);
+      overflow: hidden;
+      animation: shellRise 850ms cubic-bezier(0.25, 0.9, 0.3, 1);
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      padding: 2.1rem clamp(1.3rem, 4vw, 2.4rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .flower {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 32% 32%, rgba(18, 203, 255, 0.9), transparent 33%),
+        radial-gradient(circle at 64% 24%, rgba(241, 108, 199, 0.85), transparent 38%),
+        radial-gradient(circle at center, #4156e8 0%, #2836a3 72%, #0a0f40 100%);
+      box-shadow: inset 0 0 28px rgba(255, 255, 255, 0.15), 0 0 24px rgba(95, 86, 255, 0.4);
+      position: relative;
+    }
+
+    .flower::before,
+    .flower::after {
+      content: "";
+      position: absolute;
+      inset: -11px;
+      border-radius: 50%;
+      border: 2px dashed rgba(132, 189, 255, 0.3);
+      animation: spin 17s linear infinite;
+    }
+
+    .flower::after {
+      inset: -17px;
+      border-style: solid;
+      border-color: transparent;
+      border-top-color: rgba(240, 110, 201, 0.48);
+      border-right-color: rgba(18, 203, 255, 0.4);
+      animation-duration: 26s;
+      animation-direction: reverse;
+    }
+
+    .logo-text {
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--warm);
+      font-size: clamp(1.25rem, 3.6vw, 2rem);
+    }
+
+    .logo-text span {
+      font-size: 0.58em;
+      margin-left: 0.45ch;
+      opacity: 0.94;
+    }
+
+    .proposal-chip {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      padding: 0.45rem 0.95rem;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .hero {
+      padding: clamp(1.8rem, 3.8vw, 3rem) clamp(1.3rem, 4vw, 2.4rem);
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 1.4rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      font-size: 0.74rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 1px;
+      background: var(--accent-grad);
+    }
+
+    h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 6vw, 3.35rem);
+      letter-spacing: 0.01em;
+      line-height: 1.06;
+      margin-bottom: 0.7rem;
+    }
+
+    .lead {
+      color: #d8dcee;
+      max-width: 62ch;
+    }
+
+    .meta {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 1.05rem 1.15rem;
+      background: var(--panel);
+      display: grid;
+      align-content: center;
+      gap: 0.5rem;
+    }
+
+    .meta p {
+      font-size: 0.94rem;
+    }
+
+    .meta strong {
+      color: var(--warm);
+      font-weight: 600;
+    }
+
+    main {
+      padding: 1.4rem clamp(1.3rem, 4vw, 2.4rem) 2.3rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      grid-column: span 12;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 1.1rem 1.1rem 1.2rem;
+      background: var(--panel);
+      animation: fadeUp 650ms cubic-bezier(0.25, 0.9, 0.3, 1) both;
+    }
+
+    .card h2 {
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.7rem;
+      color: var(--warm);
+    }
+
+    .card p {
+      color: #d7dbeb;
+    }
+
+    .split {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    ul,
+    ol {
+      margin-left: 1.08rem;
+      color: #d7dbeb;
+      display: grid;
+      gap: 0.42rem;
+    }
+
+    li::marker {
+      color: #98e6ff;
+    }
+
+    .scope {
+      display: grid;
+      gap: 0.95rem;
+      counter-reset: item;
+    }
+
+    .scope li {
+      list-style: none;
+      margin-left: 0;
+      border-left: 2px solid rgba(255, 255, 255, 0.15);
+      padding-left: 0.8rem;
+    }
+
+    .scope li strong {
+      display: block;
+      color: var(--warm);
+      margin-bottom: 0.35rem;
+    }
+
+    .range {
+      display: inline-block;
+      margin-top: 0.3rem;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      background: var(--accent-grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .foot {
+      margin-top: 1rem;
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .pill {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      padding: 0.35rem 0.75rem;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .w6 { grid-column: span 6; }
+
+    @media (max-width: 920px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .w6 {
+        grid-column: span 12;
+      }
+    }
+
+    @keyframes spin {
+      to { transform: rotate(1turn); }
+    }
+
+    @keyframes shellRise {
+      from {
+        opacity: 0;
+        transform: translateY(22px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="brand" aria-label="LuxWeb">
+        <div class="flower" aria-hidden="true"></div>
+        <div class="logo-text">Lux<span>Web</span></div>
+      </div>
+      <div class="proposal-chip">Website Redesign Proposal</div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Prepared by LuxWeb</div>
+        <h1>Website Redesign Proposal</h1>
+        <p class="lead">A strategic redesign for Active Waste Solutions to modernize the website, improve user experience, and strengthen long-term performance while protecting search visibility.</p>
+      </div>
+      <aside class="meta">
+        <p><strong>Prepared for:</strong> Active Waste Solutions</p>
+        <p><strong>Prepared by:</strong> LuxWeb</p>
+        <p><strong>Estimated Timeline:</strong> 4 to 6 weeks</p>
+      </aside>
+    </section>
+
+    <main>
+      <div class="grid">
+        <article class="card">
+          <h2>Project Overview</h2>
+          <p>LuxWeb proposes a complete website redesign built in a fresh WordPress environment using Elementor. This approach improves flexibility, simplifies content management, and creates a scalable platform while preserving existing functionality and SEO value.</p>
+        </article>
+
+        <article class="card w6" style="animation-delay: 70ms;">
+          <h2>Objectives</h2>
+          <ul>
+            <li>Deliver a modern, professional design aligned with business goals</li>
+            <li>Improve mobile responsiveness and overall user experience</li>
+            <li>Maintain existing SEO value and rankings</li>
+            <li>Preserve functionality while enhancing performance</li>
+            <li>Provide a scalable platform for future growth</li>
+          </ul>
+        </article>
+
+        <article class="card w6" style="animation-delay: 120ms;">
+          <h2>Timeline</h2>
+          <p>Estimated timeline: <strong>4 to 6 weeks</strong> from project start, depending on feedback turnaround and content approvals.</p>
+        </article>
+
+        <article class="card" style="animation-delay: 160ms;">
+          <h2>Scope of Work</h2>
+          <ul class="scope">
+            <li>
+              <strong>1. Discovery &amp; Brand Direction</strong>
+              If formal brand guidelines are unavailable, we establish visual foundations including color palette, typography, and style direction.
+            </li>
+            <li>
+              <strong>2. Design &amp; Development</strong>
+              Custom homepage and core page redesign, full content migration, fresh WordPress installation, Elementor setup, and mobile/tablet optimization.
+            </li>
+            <li>
+              <strong>3. SEO Preservation</strong>
+              URL preservation where possible, 301 redirects, metadata migration, sitemap submission, and technical SEO best practices.
+            </li>
+            <li>
+              <strong>4. Functionality &amp; Integrations</strong>
+              Migration of forms/contact workflows, integration of existing third-party tools, and implementation of approved new features.
+            </li>
+            <li>
+              <strong>5. Quality Assurance &amp; Launch</strong>
+              Cross-browser and device testing, optimization, final review, approval, and live deployment.
+            </li>
+          </ul>
+        </article>
+
+        <article class="card w6" style="animation-delay: 220ms;">
+          <h2>Investment</h2>
+          <p>Estimated investment range:</p>
+          <p class="range">$3,500 to $5,000</p>
+          <p>Final pricing depends on confirmed scope, page count, and additional feature requests.</p>
+        </article>
+
+        <article class="card w6" style="animation-delay: 270ms;">
+          <h2>Ongoing Support</h2>
+          <p>Optional maintenance and support packages are available upon request to ensure continued performance, updates, and security.</p>
+        </article>
+
+        <article class="card" style="animation-delay: 310ms;">
+          <h2>Next Steps</h2>
+          <ol>
+            <li>Project agreement and deposit</li>
+            <li>Discovery kickoff meeting</li>
+            <li>Design mockups</li>
+            <li>Development phase</li>
+          </ol>
+          <div class="foot">
+            <span>We look forward to helping modernize your digital presence.</span>
+            <span class="pill">Prepared by LuxWeb</span>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
