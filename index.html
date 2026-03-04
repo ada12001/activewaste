@@ -37,7 +37,8 @@
       background: #06070e;
       line-height: 1.6;
       overflow-x: hidden;
-      animation: globalHueShift 120s linear infinite;
+      position: relative;
+      isolation: isolate;
     }
 
     body::after {
@@ -50,7 +51,7 @@
         radial-gradient(circle at 78% 0%, rgba(138, 82, 255, 0.25), transparent 30%),
         radial-gradient(circle at 92% 78%, rgba(240, 110, 201, 0.22), transparent 34%),
         linear-gradient(160deg, #06070e 0%, #090b18 46%, #06070f 100%);
-      z-index: -3;
+      z-index: 0;
       animation: globalHueShift 120s linear infinite;
     }
 
@@ -63,7 +64,7 @@
       background-size: 52px 52px;
       mask-image: radial-gradient(circle at center, #000 28%, transparent 90%);
       opacity: 0.25;
-      z-index: -2;
+      z-index: 0;
       animation: globalHueShift 120s linear infinite;
     }
 
@@ -76,7 +77,9 @@
       box-shadow: 0 30px 100px rgba(1, 2, 8, 0.65);
       backdrop-filter: blur(18px);
       overflow: hidden;
-      animation: shellRise 850ms cubic-bezier(0.25, 0.9, 0.3, 1);
+      position: relative;
+      z-index: 1;
+      animation: shellRise 850ms cubic-bezier(0.25, 0.9, 0.3, 1), globalHueShift 120s linear infinite;
     }
 
     header {
